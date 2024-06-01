@@ -1,259 +1,144 @@
 @extends('layout')
 @section('content')
-    <!-- Start Breadcrumb 
-    ============================================= -->
-    <div class="breadcrumb-area shadow dark bg-fixed text-center padding-xl text-light" style="background-image: url(assets/img/banner/i5.jpg);">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-6 text-left">
+    <!-- main banner -->
+    <section class="banner banner-inner parallax" data-stellar-background-ratio="0.5" id="banner-contact">
+        <div class="banner-text">
+            <div class="center-text">
+                <div class="container">
                     <h1>Contact Us</h1>
-                </div>
-                <div class="col-md-6 col-sm-6 text-right">
-                    <ul class="breadcrumb">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Page</a></li>
-                        <li class="active">Contact</li>
-                    </ul>
+                    <strong class="subtitle">The most detailed and modern Adventure Safari</strong>
+                    <!-- breadcrumb -->
+                    <nav class="breadcrumbs">
+                        <ul>
+                            <li><a href="index.html">HOME</a></li>
+                            <li><span>contact US</span></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Breadcrumb -->
-
-    <!-- Start Contact 
-    ============================================= -->
-    <div class="contact-form-area default-padding">
-        <div class="container">
-            <div class="row">
-                <!-- Start Contact Form -->
-                <div id="contact" class="col-md-7 contact-form">
-                    <div class="content">
-                        <div class="heading">
-                            <h3>Let's Talk about Your consultancy</h3>
-                        </div>
-                        <form action="/contact" method="POST" class="contact-form c-form">
-                            @csrf
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="form-group">
-                                        <input class="form-control" id="name" name="name" required placeholder="Name*" type="text">
-                                        @error('name')
-                                        <span class="alert-error">{{$message}}</span>
-                                        @enderror
+    </section>
+    <!-- main container -->
+    <main id="main">
+        <!-- main contact information block -->
+        <div class="content-block bg-white">
+            <div class="container">
+                <header class="content-heading">
+                    <h2 class="main-heading">get in touch</h2>
+                    <strong class="main-subtitle">Contact us by email, phone or through our web form below.</strong>
+                    <div class="seperator"></div>
+                </header>
+                <div class="contact-info row">
+                    <div class="col-sm-4">
+								<span class="tel has-border">
+									<span class="icon-tel-big"></span>
+									<a href="tel:02085775771">+254 707 173 473</a>
+								</span>
+                        <h3>Booking Enquiries</h3>
+                        <p>Click, Pack, Go: Seamless Booking for Your Perfect Trip!</p>
+                    </div>
+                    <div class="col-sm-4">
+								<span class="tel has-border bg-blue">
+									<span class="icon-fax-big"></span>
+									<a href="tel:02085775771">+254 746 925 515</a>
+								</span>
+                        <h3>Post Booking Questions</h3>
+                        <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit</p>
+                    </div>
+                    <div class="col-sm-4">
+								<span class="tel has-border">
+									<span class="icon-tel"></span>
+									<a href="tel:02085775771">+254 707 173 473</a>
+								</span>
+                        <h3>Payment Queries</h3>
+                        <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 wow fadeInLeft">
+                        <!-- main contact form -->
+                        <form class="contact-form has-border" id="contact_form" action="#">
+                            <fieldset>
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <strong class="form-title"><label for="fname">First name</label></strong>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="input-wrap">
+                                            <input type="text" class="form-control" id="fname" name="fname">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="form-group">
-                                        <input class="form-control" required id="email" name="email" placeholder="Email*" type="email">
-                                        @error('email')
-                                        <span class="alert-error">{{$message}}</span>
-                                        @enderror
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <strong class="form-title"><label for="lname">Last name</label></strong>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="input-wrap">
+                                            <input type="text" class="form-control" id="lname" name="lname">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="form-group">
-                                        <input class="form-control" id="phone" name="phone" placeholder="Phone" type="text">
-                                        @error('phone')
-                                        <span class="alert-error">{{$message}}</span>
-                                        @enderror
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <strong class="form-title"><label for="con_email">Email</label></strong>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="input-wrap">
+                                            <input type="email" class="form-control" id="con_email" name="con_email">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="form-group comments">
-                                        <textarea required class="form-control message" id="comments" name="message"  placeholder="message*"></textarea>
-                                        @error('message')
-                                        <span class="alert-error">{{$message}}</span>
-                                        @enderror
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <strong class="form-title"><label for="con_phone">Phone number</label></strong>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="input-wrap">
+                                            <input type="text" class="form-control" id="con_phone" name="con_phone">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <button name="submit" id="submit">
-                                        Send Message <i class="fa fa-paper-plane"></i>
-                                    </button>
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <strong class="form-title"><label for="con_country">Country</label></strong>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="input-wrap">
+                                            <input type="text" class="form-control" id="con_country" name="con_country">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Alert Message -->
-                            <div class="col-md-12 alert-notification">
-                                <div id="message"></div>
-                            </div>
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <strong class="form-title"><label for="con_message">Message</label></strong>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="input-wrap">
+                                            <textarea cols="30" rows="10" class="form-control" id="con_message" name="con_message"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group btn-holder">
+                                    <div class="col-sm-4">&nbsp;</div>
+                                    <div class="col-sm-8">
+                                        <div class="input-wrap">
+                                            <input type="submit" id="btn_sent" value="Send enquiry" class="btn btn-white">
+                                            <p id="error_message"> </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
                         </form>
                     </div>
-                </div>
-                <!-- End Contact Form -->
-                <div class="col-md-5 office-info">
-                    <!-- Start Tab Contact Info -->
-                    <div class="tab-nvas">
-                        <ul class="nav nav-pills">
-                            <li class="active">
-                                <a data-toggle="tab" href="#id1" aria-expanded="true">
-                                    Nairobi Office
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#id2" aria-expanded="false">
-                                    Mombasa Office
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#id3" aria-expanded="false">
-                                    Kisumu Office
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="tab-content pad-all-20p txt-center-mobile">
-                        <div id="id1" class="tab-pane active">
-                            <ul>
-                                <li>
-                                    <img src="assets/img/office/1.jpg" alt="Thumb">
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <img src="assets/img/location.png"/>
-                                    </div>
-                                    <div class="info">
-                                        <p>
-                                            Our Location
-                                            <span>Mombasa, Kenya 80100</span>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <img src="assets/img/gmail (2).png"/>
-                                    </div>
-                                    <div class="info">
-                                        <p>
-                                            Send Us Mail
-                                            <span>Info@gmail.com</span>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <img src="assets/img/phone-call.png"/> 
-                                    </div>
-                                    <div class="info">
-                                        <p>
-                                            Call Us
-                                            <span>+254722176561</span>
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="id2" class="tab-pane">
-                            <ul>
-                                <li>
-                                    <img src="assets/img/office/2.jpg" alt="Thumb">
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <img src="assets/img/location.png"/>
-                                    </div>
-                                    <div class="info">
-                                        <p>
-                                            Our Location
-                                            <span>Mombasa, Kenya 80100</span>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <img src="assets/img/gmail (2).png"/>
-                                    </div>
-                                    <div class="info">
-                                        <p>
-                                            Send Us Mail
-                                            <span>Info@gmail.com</span>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <img src="assets/img/phone-call.png"/> 
-                                    </div>
-                                    <div class="info">
-                                        <p>
-                                            Call Us
-                                            <span>+254722176561</span>
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="id3" class="tab-pane">
-                            <ul>
-                                <li>
-                                    <img src="assets/img/office/3.jpg" alt="Thumb">
-                                    <div class="icon">
-                                        <img src="assets/img/location.png"/>
-                                    </div>
-                                    <div class="info">
-                                        <p>
-                                            Our Location
-                                            <span>Mombasa, Kenya 80100</span>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <img src="assets/img/gmail (2).png"/>
-                                    </div>
-                                    <div class="info">
-                                        <p>
-                                            Send Us Mail
-                                            <span>Info@kma.go.ke</span>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <img src="assets/img/phone-call.png"/> 
-                                    </div>
-                                    <div class="info">
-                                        <p>
-                                            Call Us
-                                            <span>+254722176561</span>
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
+                    <div class="col-md-6 map-col-main wow fadeInRight">
+                        <!-- google map  -->
+                        <div class="map-holder">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5465.157030628598!2d-73.96073921239335!3d40.77310095275902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258957b88f9ed%3A0xac6ddf195a5da77a!2s77+St!5e0!3m2!1sne!2snp!4v1449890237045" width="600" height="670" allowfullscreen></iframe>
                         </div>
                     </div>
-                    <!-- End Tab Contact Info -->
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Contact -->
-
-    <!-- Start Maps Area 
-    ============================================= -->
-    <div class="maps-area-items">
-        <div class="maps-box oh">
-            <div class="google-maps">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14767.262289338461!2d70.79414485000001!3d22.284975!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1424308883981"></iframe>
-            </div>
-        </div>
-    </div>
-    <!-- End Maps Area -->
-    <!-- jQuery Frameworks
-        ============================================= -->
-        
-        {{-- <script src="{{ asset('assets/js/Chart.min.js') }}"></script> --}}
-        {{-- <script src="{{ asset('assets/js/custom-chart.js') }}"></script> --}}
-        {{-- <script src="{{ asset('assets/js/main.js') }}"></script> --}}
-        
-        @endsection
+    </main>
+@endsection

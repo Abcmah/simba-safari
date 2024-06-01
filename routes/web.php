@@ -34,6 +34,7 @@ Route::get('/about', [IndexController::class, 'about']);
 Route::get('/services', [IndexController::class, 'services']);
 Route::get('/projects', [IndexController::class, 'projects']);
 Route::get('/tour-listings', [TourController::class, 'index']);
+Route::get('/tour-listings/{tour}', [TourController::class, 'show']);
 
 
 Route::middleware('auth')->group(function () {

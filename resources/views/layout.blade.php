@@ -10,7 +10,9 @@
     <!-- link to font awesome -->
 {{--    <link media="all" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.css">--}}
     <link media="all" rel="stylesheet" href="{{ asset('/vendors/font-awesome/css/font-awesome.css') }}">
-
+    <!-- include owl css -->
+    <link media="all" rel="stylesheet" href="{{ asset('/vendors/owl-carousel/owl.carousel.css') }}">
+    <link media="all" rel="stylesheet" href="{{ asset('/vendors/owl-carousel/owl.theme.css')}}">
     <!-- link to custom icomoon fonts -->
 {{--    <link rel="stylesheet" type="text/css" href="css/fonts/icomoon/icomoon.css">--}}
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/fonts/icomoon/icomoon.css') }}">
@@ -22,10 +24,12 @@
     <link media="all" rel="stylesheet" href="{{ asset('/vendors/jquery-ui/jquery-ui.min.css') }}">
     <!-- include bootstrap css -->
 {{--    <link media="all" rel="stylesheet" href="css/bootstrap.css">--}}
-    <link media="all" rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link media="all" rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
+    <!-- include fancybox css -->
+    <link media="all" rel="stylesheet" href="{{ asset('/vendors/fancybox/jquery.fancybox.css') }}">
     <!-- include main css -->
 {{--    <link media="all" rel="stylesheet" href="css/main.css">--}}
-    <link media="all" rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link media="all" rel="stylesheet" href="{{ asset('/css/main.css') }}">
 </head>
 <body>
 <div class="preloader" id="pageLoad">
@@ -36,13 +40,13 @@
 <div id="wrapper">
     <div class="page-wrapper">
         <!-- main header -->
-        <header id="header">
+        <header @if(request()->is('tour-listings*')) style="background: #252525" @endif  id="header">
             <div class="container-fluid">
                 <!-- logo -->
                 <div class="logo">
-                    <a href="index.html">
-                        <img class="normal" src="img/logos/sslogo.jpg" alt="Simba Safaris">
-                        <img class="gray-logo" src="img/logos/sslogo.jpg" alt="Simba Safaris">
+                    <a href="/">
+                        <img class="normal" src="/img/logos/sslogo.jpg" alt="Simba Safaris">
+                        <img class="gray-logo" src="/img/logos/sslogo.jpg" alt="Simba Safaris">
                     </a>
                 </div>
                 <!-- main navigation -->
@@ -59,8 +63,9 @@
                     <div class="collapse navbar-collapse" id="nav">
                         <!-- main navbar -->
                         <ul class="nav navbar-nav">
-                            <li><a href="Tour-Listing.html">Tour Listing</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li class="active"><a href="/">Home</a></li>
+                            <li class="active"><a href="/tour-listings">Tour Listing</a></li>
+                            <li><a href="/contact">Contact Us</a></li>
                             <li class="dropdown has-mega-dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Activities <b class="icon-angle-down"></b></a>
                                 <div class="dropdown-menu">
@@ -117,67 +122,67 @@
                                 </div>
                             </li>
 
-                            <li><a href="blog-left-sidebar.html">Blog</a></li>
+{{--                            <li><a href="blog-left-sidebar.html">Blog</a></li>--}}
 
-                            <li class="visible-xs visible-sm nav-visible dropdown last-dropdown v-divider">
-                                <a href="my-cart.html" data-toggle="dropdown">
-                                    <span class="icon icon-cart"></span>
-                                    <span class="text hidden-md hidden-lg">Safaris</span>
-                                    <span class="text hidden-xs hidden-sm">3</span><!--have it default to blank and -->
-                                </a>
-                                <div class="dropdown-menu dropdown-md">
-                                    <div class="drop-wrap cart-wrap">
-                                        <strong class="title">Safari Explorer</strong>
-                                        <ul class="cart-list">
-                                            <li>
-                                                <div class="img">
-                                                    <a href="#">
-                                                        <img src="img/listing/img-16.jpg" height="165" width="170" alt="image description">
-                                                    </a>
-                                                </div>
-                                                <div class="text-holder">
-                                                    <span class="amount">x 2</span>
-                                                    <div class="text-wrap">
-                                                        <strong class="name"><a href="#">Weekend in Paradise</a></strong>
-                                                        <span class="price">$199</span>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="img">
-                                                    <a href="#">
-                                                        <img src="img/listing/img-17.jpg" height="165" width="170" alt="image description">
-                                                    </a>
-                                                </div>
-                                                <div class="text-holder">
-                                                    <span class="amount">x 4</span>
-                                                    <div class="text-wrap">
-                                                        <strong class="name"><a href="#">Water Sports in Spain</a></strong>
-                                                        <span class="price">$199</span>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="img">
-                                                    <a href="#">
-                                                        <img src="img/listing/img-18.jpg" height="165" width="170" alt="image description">
-                                                    </a>
-                                                </div>
-                                                <div class="text-holder">
-                                                    <span class="amount">x 4</span>
-                                                    <div class="text-wrap">
-                                                        <strong class="name"><a href="#">Beach Party in Greece</a></strong>
-                                                        <span class="price">$199</span>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="footer">
-                                            <a href="my-cart.html" class="btn btn-primary">View cart</a>
-                                            <span class="total">$3300</span>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                            <li class="visible-xs visible-sm nav-visible dropdown last-dropdown v-divider">--}}
+{{--                                <a href="my-cart.html" data-toggle="dropdown">--}}
+{{--                                    <span class="icon icon-cart"></span>--}}
+{{--                                    <span class="text hidden-md hidden-lg">Safaris</span>--}}
+{{--                                    <span class="text hidden-xs hidden-sm">3</span><!--have it default to blank and -->--}}
+{{--                                </a>--}}
+{{--                                <div class="dropdown-menu dropdown-md">--}}
+{{--                                    <div class="drop-wrap cart-wrap">--}}
+{{--                                        <strong class="title">Safari Explorer</strong>--}}
+{{--                                        <ul class="cart-list">--}}
+{{--                                            <li>--}}
+{{--                                                <div class="img">--}}
+{{--                                                    <a href="#">--}}
+{{--                                                        <img src="img/listing/img-16.jpg" height="165" width="170" alt="image description">--}}
+{{--                                                    </a>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="text-holder">--}}
+{{--                                                    <span class="amount">x 2</span>--}}
+{{--                                                    <div class="text-wrap">--}}
+{{--                                                        <strong class="name"><a href="#">Weekend in Paradise</a></strong>--}}
+{{--                                                        <span class="price">$199</span>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </li>--}}
+{{--                                            <li>--}}
+{{--                                                <div class="img">--}}
+{{--                                                    <a href="#">--}}
+{{--                                                        <img src="img/listing/img-17.jpg" height="165" width="170" alt="image description">--}}
+{{--                                                    </a>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="text-holder">--}}
+{{--                                                    <span class="amount">x 4</span>--}}
+{{--                                                    <div class="text-wrap">--}}
+{{--                                                        <strong class="name"><a href="#">Water Sports in Spain</a></strong>--}}
+{{--                                                        <span class="price">$199</span>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </li>--}}
+{{--                                            <li>--}}
+{{--                                                <div class="img">--}}
+{{--                                                    <a href="#">--}}
+{{--                                                        <img src="img/listing/img-18.jpg" height="165" width="170" alt="image description">--}}
+{{--                                                    </a>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="text-holder">--}}
+{{--                                                    <span class="amount">x 4</span>--}}
+{{--                                                    <div class="text-wrap">--}}
+{{--                                                        <strong class="name"><a href="#">Beach Party in Greece</a></strong>--}}
+{{--                                                        <span class="price">$199</span>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                        <div class="footer">--}}
+{{--                                            <a href="my-cart.html" class="btn btn-primary">View cart</a>--}}
+{{--                                            <span class="total">$3300</span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </li>
                             <li class="visible-md visible-lg nav-visible v-divider"><a href="#" class="search-opener"><span class="icon icon-search"></span></a></li>
                         </ul>
@@ -228,10 +233,10 @@
                                     <label for="select-activity">Tour Type</label>
                                     <div class='select-holder'>
                                         <select class="trip-select trip-select-v2 acitvity" name="activity" id="select-activity">
-                                            <option value="Holiday Type">Safaris Type</option>
-                                            <option value="Holiday Type">Beach Holidays</option>
-                                            <option value="Holiday Type">Weekend Trips</option>
-                                            <option value="Holiday Type">Hiking</option>
+                                            <option value="Safaris Type">Safaris Type</option>
+                                            <option value="Beach Holidays">Beach Holidays</option>
+                                            <option value="Weekend Trips">Weekend Trips</option>
+                                            <option value="Hiking">Hiking</option>
                                         </select>
                                     </div>
                                 </div>
@@ -239,10 +244,10 @@
                                     <label for="price-range">Price Range</label>
                                     <div class='select-holder'>
                                         <select class="trip-select trip-select-v2 price" name="badget" id="price-range">
-                                            <option value="1,499">$1 - $499</option>
-                                            <option value="500,999">$500 - $999</option>
-                                            <option value="1000,1499">$1000 - $1499</option>
-                                            <option value="1500,2900">$1500 - $2999</option>
+                                            <option value="1-499">$1 - $499</option>
+                                            <option value="500-999">$500 - $999</option>
+                                            <option value="1000-1499">$1000 - $1499</option>
+                                            <option value="1500-2900">$1500 - $2999</option>
                                             <option value="3000,">$3000+</option>
                                         </select>
                                     </div>
@@ -257,211 +262,7 @@
             </form>
         </header>
         <!-- main banner -->
-        <div class="banner banner-home">
-            <!-- revolution slider starts -->
-            <div id="rev_slider_279_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="restaurant-header" style="margin:0px auto;background-color:#474d4b;padding:0px;margin-top:0px;margin-bottom:0px;">
-                <div id="rev_slider_70_1" class="rev_slider fullscreenabanner" style="display:none;" data-version="5.1.4">
-                    <ul>
-                        <li class="slider-color-schema-dark" data-index="rs-2" data-transition="fade" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1000" data-rotate="0" data-saveperformance="off" data-title="Slide" data-description="">
-                            <!-- main image for revolution slider -->
-                            <img src="img/banner/img-01.jpg" alt="image description" data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-bgfit="cover" data-no-retina>
 
-                            <div class="tp-caption tp-resizeme" id="slide-897-layer-7"
-                                 data-x="['center','center','center','center']"
-                                 data-hoffset="['0','0','0','0']"
-                                 data-y="['top','top','middle','middle']"
-                                 data-voffset="['160','120','-120','-70']"
-                                 data-width="none"
-                                 data-height="none"
-                                 data-whitespace="nowrap"
-                                 data-transform_idle="o:1;"
-                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:2000;e:Power2.easeInOut;"
-                                 data-transform_out="opacity:0;s:300;s:300;"
-                                 data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
-                                 data-start="1500"
-                                 data-splitin="none"
-                                 data-splitout="none"
-                                 data-responsive_offset="on"
-                                 style="z-index: 9; white-space: nowrap; font-size: 60px; line-height: 100px;text-align:center;">
-                                <span class="icon-step"></span>
-                            </div>
-
-                            <div class="tp-caption banner-heading-sub tp-resizeme rs-parallaxlevel-0"
-                                 data-x="['center','center','center','center']"
-                                 data-hoffset="['0','0','0','0']"
-                                 data-y="['top','top','middle','middle']"
-                                 data-voffset="['280','240','10','20']"
-                                 data-fontsize="['48','48','44','28']"
-                                 data-lineheight="['85','85','50','50']"
-                                 data-width="['1200','1000','750','480']"
-                                 data-height="none"
-                                 data-whitespace="normal"
-                                 data-transform_idle="o:1;"
-                                 data-transform_in="z:0;rX:0deg;rY:0;rZ:0;sX:1.5;sY:1.5;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"
-                                 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                                 data-mask_in="x:0px;y:0px;"
-                                 data-mask_out="x:inherit;y:inherit;"
-                                 data-start="1000"
-                                 data-splitin="none"
-                                 data-splitout="none"
-                                 data-responsive_offset="on"
-                                 style="z-index: 7; letter-spacing: 0; font-weight: 100; text-align: center; color: #ffffff">SIMBA SAFARIS
-                            </div>
-
-                            <div class="tp-caption banner-heading-sub tp-resizeme rs-parallaxlevel-10"
-                                 data-x="['center','center','center','center']"
-                                 data-hoffset="['0','0','0','0']"
-                                 data-y="['top','top','middle','middle']"
-                                 data-voffset="['340','290','70','70']"
-                                 data-fontsize="['60','60','60','40']"
-                                 data-lineheight="['110','110','100','60']"
-                                 data-width="none"
-                                 data-height="none"
-                                 data-whitespace="nowrap"
-                                 data-transform_idle="o:1;"
-                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1500;e:Power4.easeInOut;"
-                                 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
-                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                                 data-start="1000"
-                                 data-splitin="none"
-                                 data-splitout="none"
-                                 data-responsive_offset="on"
-                                 style="z-index: 8; padding-right: 10px; text-indent: 5px; font-weight: 900; white-space: nowrap;">EXPEDITION
-                            </div>
-
-                            <div class="tp-caption rev-btn  rs-parallaxlevel-10" id="slide-163-layer-2"
-                                 data-x="['center','center','center','center']"
-                                 data-hoffset="['0','0','0','0']"
-                                 data-y="['middle','middle','middle','middle']"
-                                 data-voffset="['150','160','180','150']"
-                                 data-width="none"
-                                 data-height="none"
-                                 data-whitespace="nowrap"
-                                 data-transform_idle="o:1;"
-                                 data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power3.easeOut;"
-                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
-                                 data-transform_out="y:[175%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                                 data-mask_out="x:inherit;y:inherit;"
-                                 data-start="1250"
-                                 data-splitin="none"
-                                 data-splitout="none"
-                                 data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]'
-                                 data-responsive_offset="on">
-                                <a class="btn btn-banner" href="#">BOOK</a>
-                            </div>
-                        </li>
-
-                        <li data-index="rs-81" data-transition="slideoverup" data-slotamount="7"  data-easein="default" data-easeout="default" data-masterspeed="1000"  data-rotate="0"  data-saveperformance="off"  data-title="The Menu" data-description="">
-                            <!-- main image for revolution slide -->
-                            <img alt="image description" src="img/banner/img-01.jpg"  data-lazyload="img/banner/img-02.jpg" data-bgposition="right center" data-kenburns="on" data-duration="30000" data-ease="Power1.easeOut" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" class="rev-slidebg" data-no-retina>
-
-                            <div class="tp-caption tp-resizeme" id="slide-897-layer1-7"
-                                 data-x="['center','center','center','center']"
-                                 data-hoffset="['0','0','0','0']"
-                                 data-y="['top','top','middle','middle']"
-                                 data-voffset="['160','120','-120','-70']"
-                                 data-width="none"
-                                 data-height="none"
-                                 data-whitespace="nowrap"
-                                 data-transform_idle="o:1;"
-                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:2000;e:Power2.easeInOut;"
-                                 data-transform_out="opacity:0;s:300;s:300;"
-                                 data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
-                                 data-start="1500"
-                                 data-splitin="none"
-                                 data-splitout="none"
-                                 data-responsive_offset="on"
-                                 style="z-index: 9; white-space: nowrap; font-size: 60px; line-height: 100px;text-align:center;">
-                                <span class="icon-locals"></span>
-                            </div>
-
-                            <div class="tp-caption banner-heading-sub tp-resizeme rs-parallaxlevel-0"
-                                 data-x="['center','center','center','center']"
-                                 data-hoffset="['0','0','0','0']"
-                                 data-y="['top','top','middle','middle']"
-                                 data-voffset="['280','240','10','20']"
-                                 data-fontsize="['48','48','44','28']"
-                                 data-lineheight="['85','85','50','50']"
-                                 data-width="['1200','1000','750','480']"
-                                 data-height="none"
-                                 data-whitespace="normal"
-                                 data-transform_idle="o:1;"
-                                 data-transform_in="z:0;rX:0deg;rY:0;rZ:0;sX:1.5;sY:1.5;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"
-                                 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                                 data-mask_in="x:0px;y:0px;"
-                                 data-mask_out="x:inherit;y:inherit;"
-                                 data-start="1000"
-                                 data-splitin="none"
-                                 data-splitout="none"
-                                 data-responsive_offset="on"
-                                 style="z-index: 7; letter-spacing: 0; font-weight: 100; text-align: center; color: #ffffff">EXPEDITION OF UNEXPLORED
-                            </div>
-
-                            <div class="tp-caption banner-heading-sub tp-resizeme rs-parallaxlevel-10"
-                                 data-x="['center','center','center','center']"
-                                 data-hoffset="['0','0','0','0']"
-                                 data-y="['top','top','middle','middle']"
-                                 data-voffset="['340','290','70','70']"
-                                 data-fontsize="['60','60','60','40']"
-                                 data-lineheight="['110','110','100','60']"
-                                 data-width="none"
-                                 data-height="none"
-                                 data-whitespace="nowrap"
-                                 data-transform_idle="o:1;"
-                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1500;e:Power4.easeInOut;"
-                                 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
-                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                                 data-start="1000"
-                                 data-splitin="none"
-                                 data-splitout="none"
-                                 data-responsive_offset="on"
-                                 style="z-index: 8; padding-right: 10px; text-indent: 5px; font-weight: 900; white-space: nowrap;">TERRITORY
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="feature-block">
-                <div class="holder">
-                    <ul>
-                        <li>
-                            <a href="#">
-									<span class="ico">
-										<span class="icon-bungee"></span>
-									</span>
-                                <span class="info">Sky Jumping</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-									<span class="ico">
-										<span class="icon-hiking"></span>
-									</span>
-                                <span class="info">Hiking Trips</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="jungle-safari.html">
-									<span class="ico">
-										<span class="icon-wildlife"></span>
-									</span>
-                                <span class="info">Wildlife Safari</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-									<span class="ico">
-										<span class="icon-boating"></span>
-									</span>
-                                <span class="info">Sailing Trips</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
         @yield('content')
     </div>
     <!-- main footer -->
@@ -592,6 +393,7 @@
 <script src="{{asset('vendors/sticky-kit/sticky-kit.js')}}"></script>
 <script src="{{asset('js/sticky-kit-init.js')}}"></script>
 <script src="{{asset('vendors/bootstrap-datetimepicker-master/dist/js/bootstrap-datepicker.js')}}"></script>
+<script src="{{asset('/vendors/fancybox/jquery.fancybox.js')}}"></script>
 <!-- custom jquery script -->
 <!-- custom jquery script -->
 <script src="{{asset('js/jquery.main.js')}}"></script>

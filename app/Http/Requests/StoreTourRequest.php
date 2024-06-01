@@ -29,9 +29,14 @@ class StoreTourRequest extends FormRequest
             'badget_from' => 'required',
             'region_id' => 'required',
             'activity_id' => 'required',
-            'activity_level_id' => 'required',
+            'activity_level_id' => 'nullable',
             'landscape_id' => 'required',
-            'photo' => 'nullable'
+            'departing'=>'required',
+            'returning'=>'required',
+            'photo' => 'nullable',
+            'secphoto' => 'nullable',
+            'inclusions' => 'nullable',
+            'exclusions' => 'nullable'
         ];
     }
 }

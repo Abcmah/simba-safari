@@ -19,6 +19,12 @@ return new class extends Migration
             $table->longText('discription')->nullable();
             $table->integer('badget_from')->nullable();
             $table->string('photo')->nullable();
+            $table->string('secondPhoto')->nullable();
+            $table->date('departing')->nullable();
+            $table->date('returning')->nullable();
+            $table->text('about')->nullable();
+            $table->text('inclusion')->nullable();
+            $table->text('exclusion')->nullable();
             $table->foreignId('region_id')->constrained('regions')->cascadeOnDelete()->nullable();
             $table->foreignId('activity_type_id')->constrained('activity_types')->cascadeOnDelete()->nullable();
             $table->foreignId('landscape_id')->constrained('landscapes')->cascadeOnDelete()->nullable();

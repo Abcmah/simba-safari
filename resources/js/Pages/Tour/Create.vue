@@ -25,6 +25,11 @@ defineProps(['activities','activity_level', 'landscapes', 'regions']);
     activity_level_id: '',
     landscape_id: '',
     photo: '',
+   secphoto:'',
+   departing:'',
+   returning:'',
+   inclusions:'',
+   exclusions:''
 });
 
 const submit = () => {
@@ -117,6 +122,11 @@ const modules = {
                     <!-- <InputError class="mt-2 text-danger" :message="form.error.image" /> -->
                 </div>
                 <div class="col-12">
+                  <label for="inputNumber" class="form-label">Second Photo</label>
+                    <input class="form-control" @input="form.secphoto = $event.target.files[0]" type="file" id="formFile">
+                    <!-- <InputError class="mt-2 text-danger" :message="form.error.image" /> -->
+                </div>
+                <div class="col-12">
                   <div>
                         <InputLabel for="name" value="Days" />
         
@@ -151,6 +161,42 @@ const modules = {
                     </div>
                 </div>
 
+                <div class="col-md-12 pb-4 d-flex flex-column">
+                  <div>
+                    <InputLabel for="name" value="Departure date" />
+
+                    <TextInput
+                        id="name"
+                        type="date"
+                        class="form-control"
+                        v-model="form.departing"
+                        required
+                        autofocus
+                        autocomplete="tags"
+                    />
+
+                    <InputError class="mt-2 text-danger" :message="form.errors.departing" />
+                  </div>
+
+                </div>
+                <div class="col-md-12 pb-4 d-flex flex-column">
+                  <div>
+                    <InputLabel for="name" value="Returning date" />
+
+                    <TextInput
+                        id="name"
+                        type="date"
+                        class="form-control"
+                        v-model="form.returning"
+                        required
+                        autofocus
+                        autocomplete="tags"
+                    />
+
+                    <InputError class="mt-2 text-danger" :message="form.errors.returning" />
+                  </div>
+
+                </div>
                 <div class="col-md-12 pb-4 d-flex flex-column">
                   <label for="inputEmail5" class="form-label">Description</label>
                   <QuillEditor :modules="modules" toolbar="full" contentType="html" theme="snow"  v-model:content="form.description" :options="{placeholder: 'Write something...'}"/>
@@ -200,6 +246,7 @@ const modules = {
                     <InputError class="mt-2 text-danger" :message="form.errors.activity_level_id" />
                   </div>
                 </div>
+
                 <div class="col-12">
                   <div>
                     <InputLabel for="name" value="Landscape" />
@@ -210,7 +257,20 @@ const modules = {
                   </div>
                 </div>
 
-            
+                <div class="col-12">
+                  <div>
+                    <InputLabel for="name" value="Inclusions (csv)" />
+                    <textarea v-model="form.inclusions" class="form-control">item1, item2, item3</textarea>
+                    <InputError class="mt-2 text-danger" :message="form.errors.landscape_id" />
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div>
+                    <InputLabel for="name" value="Exclusions (csv)" />
+                    <textarea v-model="form.exclusions" class="form-control"> item1, item2, item3</textarea>
+                    <InputError class="mt-2 text-danger" :message="form.errors.landscape_id" />
+                  </div>
+                </div>
                
                 <div class="">
                   <button  type="submit" class="btn btn-primary">Create Post</button>

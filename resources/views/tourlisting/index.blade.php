@@ -10,7 +10,7 @@
                     <!-- breadcrumb -->
                     <nav class="breadcrumbs">
                         <ul>
-                            <li><a href="index.html">HOME</a></li>
+                            <li><a href="/">HOME</a></li>
                             <li>ADVENTURES</li>
                         </ul>
                     </nav>
@@ -252,10 +252,8 @@
                                     <div id="collapse5" class="panel-collapse collapse in" role="tabpanel">
                                         <div class="panel-body">
                                             <div id="slider-range"></div>
-                                            <input type="text" id="amount" readonly class="price-input">
-                                            <div id="ammount" class="price-input">
+                                            <input type="text"  id="amount" readonly class="price-input">
 
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -293,7 +291,7 @@
                     </aside>
                     <div id="content" class="col-md-8 col-lg-9">
                         <div class="filter-option filter-box">
-                            <strong class="result-info">179 TRIPS MATCHES YOUR SEARCH</strong>
+                            <strong class="result-info">{{ count($tourlistings) }} TRIPS MATCHES YOUR SEARCH</strong>
                             <div class="layout-holder">
                                 <div class="layout-action">
                                     <a href="#" class="link link-list"><span class="icon-list"></span></a>
@@ -317,9 +315,9 @@
                                     <article class="col-md-6 col-lg-4 article has-hover-s1 thumb-full">
                                         <div class="thumbnail">
                                             <div class="img-wrap">
-                                                <img src="img/listing/img-19.jpg" height="228" width="350" alt="image description">
+                                                <img src="{{'/storage/'.$tourlisting->photo}}" height="228" width="350" alt="image description">
                                             </div>
-                                            <h3 class="small-space"><a href="Aberdares-tour-detail.html">{{ $tourlisting->place }}</a></h3>
+                                            <h3 class="small-space"><a href="/tour-listings/{{$tourlisting->id}}">{{ $tourlisting->place }}</a></h3>
                                             <!--<span class="info">Nordic Walk, Swiss Alps or French Hiking?</span>-->
                                             <aside class="meta">
 											<span class="country">
@@ -329,8 +327,8 @@
 												<span class="icon-acitivities"> </span>{{$tourlisting->nights}} Nights
 											</span>
                                             </aside>
-                                            <p>c</p>
-                                            <a href="Aberdares-tour-detail.html" class="btn btn-default">explore</a>
+                                            {!! $tourlisting->discription !!}
+                                            <a href="/tour-listings/{{$tourlisting->id}}" class="btn btn-default">explore</a>
                                             <footer>
                                                 <ul class="social-networks">
                                                     <li><a href="#"><span class="icon-twitter"></span></a></li>
@@ -346,23 +344,29 @@
 
                             </div>
                         </div>
+{{--                            <div class="col-md-12 pagi-area">--}}
+{{--                                <nav aria-label="navigation">--}}
+{{--                                    <ul class="pagination">--}}
+{{--                                        {{ $tourlistings->links() }}--}}
+{{--                                    </ul>--}}
+{{--                                </nav>--}}
+{{--                            </div>--}}
                         <!-- pagination wrap -->
-                        <nav class="pagination-wrap"><!--
+                        <!--
 									<div class="btn-prev">
 										<a href="#" aria-label="Previous">
 											<span class="icon-angle-right"></span>
 										</a>
 									</div>-->
-                            <ul class="pagination">
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="Tour-Listing(2).html">2</a></li>
-                            </ul>
-                            <div class="btn-next">
-                                <a href="Tour-Listing(2).html" aria-label="Previous">
-                                    <span class="icon-angle-right"></span>
-                                </a>
+
+                            <div class="col-md-12 pagi-area">
+                                <nav style="display: flex; justify-content: center;" aria-label="navigation mx-auto">
+                                    <ul  class="pagination">
+                                        {{ $tourlistings->links() }}
+                                    </ul>
+                                </nav>
                             </div>
-                        </nav>
+
                     </div>
                 </div>
             </div>
@@ -540,5 +544,13 @@
             </div>
         </aside>
     </main>
+    <script>
+        let budgetBraket = document.querySelector('#slider-range')
+        console.log(budgetBraket);
+        budgetBraket.addEventListener('click',()=>{
+            window.location.href = `/tour-listings?price_range=${document.querySelector('#amount').value}`
+            console.log(budgetBraket.value)
+        })
+    </script>
 @endsection
 

@@ -19,8 +19,8 @@ class TourController extends Controller
      */
     public function index()
     {
-        $tours = Tour::latest()->filter(request(['activity','region','badget','departing', 'returning']))->Paginate(10);
-        return view('tourlisting',['tourlistings'=>$tours]);
+        $tours = Tour::latest()->filter(request(['activity','region','badget','departing', 'returning','landscape','level','price_range']))->Paginate(1);
+        return view('tourlisting.index',['tourlistings'=>$tours]);
     }
 
     /**
@@ -50,6 +50,9 @@ class TourController extends Controller
         if($request->hasFile('photo')){
             $validated['photo'] = $request->file('photo')->store('uploads','public');
         }
+        if($request->hasFile('secphoto')){
+            $validated['secphoto'] = $request->file('secphoto')->store('uploads','public');
+        }
         Tour::create([
             'place'=>$validated['place'],
             'days'=>$validated['days'],
@@ -58,9 +61,14 @@ class TourController extends Controller
             'badget_from'=>$validated['badget_from'],
             'region_id'=>$validated['region_id'],
             'activity_type_id'=>$validated['activity_id'],
-            'activity_level_id'=>$validated['activity_level_id'],
+            'activity_level_id'=>1,
             'landscape_id'=>$validated['landscape_id'],
-            'photo' => $validated['photo']
+            'photo' => $validated['photo'],
+            'secondPhoto' => $validated['secphoto'],
+            'departing' => $validated['departing'],
+            'returning' => $validated['returning'],
+            'inclusion' => $validated['inclusions'],
+            'exclusion' => $validated['exclusions'],
         ]);
         return redirect('/tour/manage');
     }
@@ -70,8 +78,10 @@ class TourController extends Controller
      */
     public function show(Tour $tour)
     {
-        //
+        $tour->load(['region','activity_type','landscape','activity_level']);
+        return view('tourlisting.show', ['tour' => $tour]);
     }
+
 
     /**
      * Show the form for editing the specified resource.
